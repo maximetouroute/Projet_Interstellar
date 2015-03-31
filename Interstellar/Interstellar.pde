@@ -1,32 +1,24 @@
-
-
-PImage background_img;
-
 Simulator simulator = new Simulator();
+Background background = new Background();
 
-void setup() 
-{
-  background_img = loadImage("background.jpg");
-  
+void setup() {  
   // Ouverture de la fenêtre
   size(window_size_x, window_size_y);
-  background(background_img);
   stroke(255);
   frameRate(framerate);
- 
+
   simulator.setup_simulator();
+  background.setup_background();
 }
 
 
 
 void draw() {
-  
-   simulator.update_simulator();
-   
-   background(background_img);
+  background.update_background();
+  simulator.update_simulator();
 
-   simulator.draw_simulator();
-
+  background.draw_background();
+  simulator.draw_simulator();
 }
 
 
