@@ -5,7 +5,7 @@ class Background
 {
   PImage background_img;
   float angle;
-  int offset_x = 600;
+  int offset_x = 0;
 
   void setup_background()
   {
@@ -20,12 +20,12 @@ class Background
   void draw_background()
   {
     pushMatrix();
-    
+
     translate(offset_x, 0);
     rotate(radians(angle));
     imageMode(CENTER);
     image(background_img, 0, 0);
-    
+
     popMatrix();
   }
 }
