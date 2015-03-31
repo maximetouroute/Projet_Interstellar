@@ -47,8 +47,7 @@ class Asteroide
   
   void draw_asteroide()
   {
-    
-
+    imageMode(CORNER);
     image(asteroide_img, originx+posx-asteroide_img.width/2, originy+posy-asteroide_img.height/2);
   }
 }

@@ -56,10 +56,10 @@ class Simulator
 
   void draw_angle_observe()
   {
-    textSize(15);
+    textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
-    text("Angle : " + round(angle_observe) + "°", 500, 500); 
+    text("Angle : " + round(angle_observe) + "°", 500, 550); 
     // text("Angle Observateur:" + observateur.angle, 500, 550);
   }
 }

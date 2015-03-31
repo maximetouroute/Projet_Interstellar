@@ -1,6 +1,7 @@
 Simulator simulator = new Simulator();
 Background background = new Background();
 
+
 void setup() {  
   // Ouverture de la fenêtre
   size(window_size_x, window_size_y);
@@ -9,11 +10,15 @@ void setup() {
 
   simulator.setup_simulator();
   background.setup_background();
+ 
+  setup_sound();
+  play_music();
 }
 
 
 
 void draw() {
+  
   background.update_background();
   simulator.update_simulator();
 
@@ -31,5 +36,6 @@ void keyPressed() {
 
 void stop()
 {
+  stop_sound();
 }
 
