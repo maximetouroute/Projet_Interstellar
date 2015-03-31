@@ -23,7 +23,7 @@ class Observateur
   // Angle d'attaque du mouvement
   float angle_initial;
   
-
+  PImage spaceship_img;
 
   
   void setup_observateur()
@@ -32,6 +32,7 @@ class Observateur
     
     rayon = 200;
     vitesse = 0.05;
+        spaceship_img = loadImage("spaceship.png");
   }
   
  void update_observateur()
@@ -45,9 +46,10 @@ class Observateur
   
   void draw_observateur()
   {
-    
-    fill(255,255,255);
-    ellipse(originx+posx, originy+posy, 10, 10);
+    imageMode(CORNER);
+    image(spaceship_img, originx+posx-spaceship_img.width/2, originy+posy-spaceship_img.height/2);
+    //fill(255,255,255);
+    //ellipse(originx+posx, originy+posy, 10, 10);
 
   }
 }
