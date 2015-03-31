@@ -21,11 +21,11 @@ void setup()
 
 void draw() {
   
-    simulator.update_simulator();
+   simulator.update_simulator();
    
    background(background_img);
 
-    simulator.draw_simulator();
+   simulator.draw_simulator();
 
 }
 
