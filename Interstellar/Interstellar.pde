@@ -1,10 +1,8 @@
-Observateur observateur = new Observateur();
-Asteroide asteroide = new Asteroide();
+
 
 PImage background_img;
-PImage test;
-int x = 0;
-int y = 0;
+
+Simulator simulator = new Simulator();
 
 void setup() 
 {
@@ -16,31 +14,18 @@ void setup()
   stroke(255);
   frameRate(framerate);
  
-  
-  
-  observateur.setup_observateur();
-   asteroide.setup_asteroide();
-  
+  simulator.setup_simulator();
 }
 
 
 
 void draw() {
   
-  //x = constrain(x, 0, background_img.width - window_size_x);
-  //y = constrain(y, 0, background_img.height - window_size_y);
-  
-  //image(background_img, x, y); 
-
-  // Mise à jour des données du jeu.
-   observateur.update_observateur();
-   asteroide.update_asteroide();
+    simulator.update_simulator();
    
    background(background_img);
-  observateur.draw_observateur();
-  asteroide.draw_asteroide();
-  
 
+    simulator.draw_simulator();
 
 }
 
