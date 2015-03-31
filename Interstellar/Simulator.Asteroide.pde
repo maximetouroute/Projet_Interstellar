@@ -21,16 +21,19 @@ class Asteroide
   float vitesse_x;
   float vitesse_y;
   
+   
+  PImage asteroide_img;
+  
   /*
   Construction des donnees de l'asteroide
   */
   void setup_asteroide()
   {
-    vitesse_x = -0.1;
+    vitesse_x = 0.1;
     vitesse_y = -0.1;
     posx = x_initial;
     posy = y_initial;
-       
+    asteroide_img = loadImage("asteroide.png");
   }
   
  void update_asteroide()
@@ -44,8 +47,9 @@ class Asteroide
   
   void draw_asteroide()
   {
-    fill(235,207,171);
-    ellipse(originx+posx, originy+posy, 25, 25);    
+    
+
+    image(asteroide_img, originx+posx-asteroide_img.width/2, originy+posy-asteroide_img.height/2);
   }
 }
 
