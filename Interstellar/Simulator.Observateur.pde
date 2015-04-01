@@ -47,12 +47,11 @@ class Observateur
   void draw_observateur()
   {
 
-   imageMode(CORNER);
+    imageMode(CENTER);
 
-    image(spaceship_img, originx+posx-spaceship_img.width/2, originy+posy-spaceship_img.height/2);
+    image(spaceship_img, originx+posx, originy+posy);
     //fill(255,255,255);
     //ellipse(originx+posx, originy+posy, 10, 10);
   }
 }
-
 
