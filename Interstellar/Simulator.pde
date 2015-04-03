@@ -31,10 +31,9 @@ class Simulator
   }
   void draw_simulator()
   {
-
+    draw_angle_observe();
     asteroide.draw_asteroide();
     observateur.draw_observateur();
-    draw_angle_observe();
   }
 
 
@@ -49,13 +48,22 @@ class Simulator
 
     //angle_observe = acos( (vector.x * vec_vertical.x + vector.y * vec_vertical.y) / (sqrt( sq(vector.x) + sq(vector.y) ) * sqrt( sq(vec_vertical.x) + sq(vec_vertical.y) )));
     angle_observe = degrees(PVector.angleBetween(vector, vec_vertical));
-
-    fill(255, 0, 0);
-    line(asteroide.posx, asteroide.posy, observateur.posx, observateur.posy);
   }
 
   void draw_angle_observe()
   {
+    stroke(255, 255, 255);
+    strokeWeight(1);
+    line(asteroide.posx+originx, 0, asteroide.posx+originx, window_size_y);
+
+    stroke(255, 255, 0);
+    strokeWeight(2);
+    line(asteroide.posx+originx, asteroide.posy+originy, observateur.posx+originx, observateur.posy+originy);
+
+    strokeWeight(0);
+    fill(0, 200, 0, 100);
+    triangle(asteroide.posx+originx, asteroide.posy+originy, observateur.posx+originx, observateur.posy+originy, asteroide.posx+originx, originy+observateur.rayon);
+
     textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
