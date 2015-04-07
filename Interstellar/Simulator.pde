@@ -74,7 +74,7 @@ class Simulator
     
     stroke(255, 255, 255);
     strokeWeight(1);
-    line(observateur.posx+originx, 0, observateur.posx+originx, window_size_y);
+    line(observateur.posx+originx, 0, observateur.posx+originx, observateur.posy+originy);
 
     stroke(255, 255, 0);
     strokeWeight(2);
