@@ -52,18 +52,47 @@ class Simulator
 
   void draw_angle_observe()
   {
+    
     stroke(255, 255, 255);
     strokeWeight(1);
-    line(asteroide.posx+originx, 0, asteroide.posx+originx, window_size_y);
+    line(observateur.posx+originx, 0, observateur.posx+originx, window_size_y);
 
     stroke(255, 255, 0);
     strokeWeight(2);
     line(asteroide.posx+originx, asteroide.posy+originy, observateur.posx+originx, observateur.posy+originy);
 
     strokeWeight(0);
+    ellipseMode(CENTER);
     fill(0, 200, 0, 100);
-    triangle(asteroide.posx+originx, asteroide.posy+originy, observateur.posx+originx, observateur.posy+originy, asteroide.posx+originx, originy+observateur.rayon);
+    //triangle(asteroide.posx+originx, asteroide.posy+originy, observateur.posx+originx, observateur.posy+originy, asteroide.posx+originx, originy+observateur.rayon);
+    
+   if(observateur.posx < asteroide.posx)
+   {
+     fill(0, 200, 0, 100);
+     arc(observateur.posx+originx, observateur.posy+originy, 200, 200, -HALF_PI, -radians(90-angle_observe), PIE);
+     
+     noFill();
+     stroke(200,0,0);
+     strokeWeight(2);
+     arc(observateur.posx+originx, observateur.posy+originy, 200, 200, -HALF_PI, -radians(90-angle_observe), OPEN);
+   }     
+   else
+   {
+     fill(0, 200, 0, 100);
+     arc(observateur.posx+originx, observateur.posy+originy, 200, 200, HALF_PI+radians(180-angle_observe), PI+HALF_PI, PIE);  // Un peu sale mais bon.
+     
+     noFill();
+     stroke(200,0,0);
+     strokeWeight(2);
+     arc(observateur.posx+originx, observateur.posy+originy, 200, 200, HALF_PI+radians(180-angle_observe), PI+HALF_PI, OPEN);  // Un peu sale mais bon.
+   }
 
+     
+   
+  
+
+  
+  
     textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
