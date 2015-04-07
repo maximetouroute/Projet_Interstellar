@@ -2,6 +2,10 @@ Simulator simulator = new Simulator();
 Background background = new Background();
 
 
+int STATE;
+int MOVEMENT_STATE = 0;
+int SNAPSHOT_STATE = 1;
+
 void setup() {  
   // Ouverture de la fenêtre
   size(window_size_x, window_size_y);
@@ -19,11 +23,22 @@ void setup() {
 
 void draw() {
   
-  background.update_background();
+  if (STATE == MOVEMENT_STATE)
+  {
+    background.update_background();
   simulator.update_simulator();
 
   background.draw_background();
   simulator.draw_simulator();
+  }
+  else if (STATE == SNAPSHOT_STATE)
+  {
+    textSize(70);
+    textAlign(CENTER, CENTER);
+    fill(255, 255, 255);
+    text("SNAPSHOT!", 250, 250); 
+  }
+  
 }
 
 
@@ -39,6 +54,10 @@ void keyPressed()
    if (key == 'o')
    {
       loop();
+   }
+   if(key== 'x')
+   {
+     STATE = SNAPSHOT_STATE;
    }
    
    

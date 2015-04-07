@@ -6,13 +6,18 @@ class Simulator
 
   // La période d'echantillonnage
   float Te;
-
+  
+  // Le nombre de positions stockées
+  int STOCK_NUMBER = 4;
   
   float angle_observe;
   // Les elements dans le simulateur
   Observateur observateur = new Observateur();
   Asteroide asteroide = new Asteroide();
-
+  
+  FloatList angles_observes = new FloatList();
+  FloatList positions_x = new FloatList();
+  FloatList positions_y = new FloatList();
 
   /* Useless pour l'instant */
   void setup_simulator()
@@ -29,6 +34,22 @@ class Simulator
     observateur.update_observateur();
     asteroide.update_asteroide();
     calcul_angle_observe();
+    
+    // On ajoute les nouvelles valeurs dans la liste
+    
+    angles_observes.append(angle_observe);
+    positions_x.append(observateur.posx);
+    positions_x.append(observateur.posy);
+    
+    if( angles_observes.size() > STOCK_NUMBER ) // TODO: pas très rigoureux comme test
+    {
+      angles_observes.remove(0);
+      positions_x.remove(0);
+      positions_x.remove(0);   
+    }
+      
+    
+    
   }
   void draw_simulator()
   {
@@ -40,11 +61,8 @@ class Simulator
 
   void calcul_angle_observe()
   {
-
-
     // Definition du vecteur reliant l'observateur a l'asteroide
-
-      PVector vector = new PVector(observateur.posx - asteroide.posx, observateur.posy - asteroide.posy);
+    PVector vector = new PVector(observateur.posx - asteroide.posx, observateur.posy - asteroide.posy);
     PVector vec_vertical = new PVector (0, 1);
 
     //angle_observe = acos( (vector.x * vec_vertical.x + vector.y * vec_vertical.y) / (sqrt( sq(vector.x) + sq(vector.y) ) * sqrt( sq(vec_vertical.x) + sq(vec_vertical.y) )));
@@ -56,7 +74,7 @@ class Simulator
     
     stroke(255, 255, 255);
     strokeWeight(1);
-    line(observateur.posx+originx, 0, observateur.posx+originx, observateur.posy+originy);
+    line(observateur.posx+originx, 0, observateur.posx+originx, window_size_y);
 
     stroke(255, 255, 0);
     strokeWeight(2);
@@ -88,16 +106,20 @@ class Simulator
      arc(observateur.posx+originx, observateur.posy+originy, 200, 200, HALF_PI+radians(180-angle_observe), PI+HALF_PI, OPEN);  // Un peu sale mais bon.
    }
 
-     
-   
-  
 
-  
-  
-    textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
-    text("Angle : " + round(angle_observe) + "°", 500, 550); 
+    
+    
+    textSize(20);
+     text("Angle : " + round(angles_observes.get(3)) + "°", 450, 580); 
+   
+    textSize(10);
+    text(round(angles_observes.get(2)), 520, 585);
+    text(round(angles_observes.get(1)), 550, 585); 
+    text(round(angles_observes.get(0)), 580, 585); 
+    
+    
     // text("Angle Observateur:" + observateur.angle, 500, 550);
   }
 }
