@@ -14,7 +14,7 @@ class Background
 
   void update_background()
   {
-    angle += 0.02;
+    angle += 0.03;
   }
 
   void draw_background()
