@@ -7,6 +7,7 @@ class Simulator
   // La période d'echantillonnage
   float Te;
 
+  
   float angle_observe;
   // Les elements dans le simulateur
   Observateur observateur = new Observateur();

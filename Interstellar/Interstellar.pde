@@ -30,7 +30,18 @@ void draw() {
 /**
  * Gestion des évènements clavier
  */
-void keyPressed() {
+void keyPressed() 
+{
+   if (key == 'p')
+   {
+      noLoop();
+   }
+   if (key == 'o')
+   {
+      loop();
+   }
+   
+   
 }
 
 
