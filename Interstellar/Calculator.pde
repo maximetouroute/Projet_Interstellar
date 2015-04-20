@@ -3,40 +3,38 @@ import papaya.*;
 /*
 Modelise et resout une equation matricielle de la forme A*X = B
  */
-
 class Calculator
 {
-
+//Ici A[4][4] et B [4][1]
   float[][] A;
   float[][] B;
   QR qr; // Decomposition QR qui permet de resoudre l'equation
   double[][] X;
 
-  void Calculator(float[][] A, float[][] B) {
-    this.A = A;
-    this.B = B;
+  Calculator(FloatList angles, FloatList Xp, FloatList Yp) {
+    A = new float[4][4];
+    B = new float[4][1];
     qr = new QR(A);
-  }
-
-  void Calculator(float[] angles, float[] Xp, float[] Yp) {
-    // Ajouter eventuellement des securites sur la taille des matrices
     
-    /*
-    TODO:
-    Definir les matrices A et B en fonction des infos passees en parametres
-    Sachant que
-      angles est le vecteur contenant les 4 mesures d'angles
-      Xp est le vecteur contenant les 4 positions x de l'observateur
-      Yp est le vecteur contenant les 4 positions y de l'observateur
+    for(int i=0; i<A.length;i++){
+      A[i][0]=sin(angles.get(i));
+      A[i][1]=simulator.temps*sin(angles.get(i));
+      A[i][2]=-cos(angles.get(i));
+      A[i][3]=-simulator.temps*cos(angles.get(i));
       
-      NICO A LA FEUILLE QUI EXPLIQUE CE QUE CONTIENNENT LES DEUX MATRICES
-    */
+      B[i][0]=Xp.get(i)*sin(angles.get(i))-Yp.get(i)*cos(angles.get(i));
+    }
+    
     
     qr = new QR(A);
   }
 
+//TODO
+// problèmes de rang
+//calculs effectués à la fin de update_simulator
   void solveSystem() {
     X = qr.solve(B);
+    print(X[0][0]);
   }
 
   double[][] getResult() {

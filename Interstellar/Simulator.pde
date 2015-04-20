@@ -19,6 +19,9 @@ class Simulator
   FloatList positions_x = new FloatList();
   FloatList positions_y = new FloatList();
 
+//Pour retrouver la position et la vitesse initiale de l'astéroide
+  Calculator calculator;
+
   /* Useless pour l'instant */
   void setup_simulator()
   {
@@ -47,10 +50,14 @@ class Simulator
       positions_x.remove(0);
       positions_x.remove(0);   
     }
-      
     
-    
+    //TODO
+    //permet d'obtenir la position initial et la vitesse de l'asteroide
+    //commenter pour retirer problème
+    calcul_pos_vit_asteroide();
   }
+  
+  
   void draw_simulator()
   {
     draw_angle_observe();
@@ -67,6 +74,13 @@ class Simulator
 
     //angle_observe = acos( (vector.x * vec_vertical.x + vector.y * vec_vertical.y) / (sqrt( sq(vector.x) + sq(vector.y) ) * sqrt( sq(vec_vertical.x) + sq(vec_vertical.y) )));
     angle_observe = degrees(PVector.angleBetween(vector, vec_vertical));
+  }
+  
+  void calcul_pos_vit_asteroide(){
+    if(angles_observes.size()==4){
+      calculator=new Calculator(angles_observes, positions_x, positions_y);
+      calculator.solveSystem();
+    }
   }
 
   void draw_angle_observe()
