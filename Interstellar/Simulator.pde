@@ -42,13 +42,13 @@ class Simulator
     
     angles_observes.append(angle_observe);
     positions_x.append(observateur.posx);
-    positions_x.append(observateur.posy);
+    positions_y.append(observateur.posy);
     
     if( angles_observes.size() > STOCK_NUMBER ) // TODO: pas très rigoureux comme test
     {
       angles_observes.remove(0);
       positions_x.remove(0);
-      positions_x.remove(0);   
+      positions_y.remove(0);   
     }
     
     //TODO

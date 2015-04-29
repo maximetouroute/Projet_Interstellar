@@ -34,7 +34,10 @@ class Calculator
 //calculs effectués à la fin de update_simulator
   void solveSystem() {
     X = qr.solve(B);
-    print(X[0][0]);
+    print(X[0][0]+"\n"+X[1][0]+"\n"+X[2][0]+"\n"+X[3][0]+"\n\n");
+    double res=A[0][0]*X[0][0]+A[0][1]*X[1][0]+A[0][2]*X[2][0]+A[0][3]*X[3][0];
+    print("test: "+res+"\n"+B[0][0]+"\n");
+    
   }
 
   double[][] getResult() {
