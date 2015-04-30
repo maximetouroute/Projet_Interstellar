@@ -17,12 +17,13 @@ class Calculator
     qr = new QR(A);
     
     for(int i=0; i<A.length;i++){
-      A[i][0]=sin(angles.get(i));
-      A[i][1]=simulator.temps*sin(angles.get(i));
-      A[i][2]=-cos(angles.get(i));
-      A[i][3]=-simulator.temps*cos(angles.get(i));
+      float angle=radians(angles.get(i))
+      A[i][0]=sin(angle);
+      A[i][1]=simulator.temps*sin(angle);
+      A[i][2]=-cos(angle);
+      A[i][3]=-simulator.temps*cos(angle);
       
-      B[i]=Xp.get(i)*sin(angles.get(i))-Yp.get(i)*cos(angles.get(i));
+      B[i]=Xp.get(i)*sin(angle)-Yp.get(i)*cos(angle);
     }
     
     
