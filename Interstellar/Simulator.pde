@@ -48,13 +48,11 @@ class Simulator
     {
       angles_observes.remove(0);
       positions_x.remove(0);
-      positions_y.remove(0);   
+      positions_y.remove(0);  
+      calcul_pos_vit_asteroide(); 
     }
     
-    //TODO
-    //permet d'obtenir la position initial et la vitesse de l'asteroide
-    //commenter pour retirer problème
-    calcul_pos_vit_asteroide();
+    
   }
   
   
@@ -77,10 +75,8 @@ class Simulator
   }
   
   void calcul_pos_vit_asteroide(){
-    if(angles_observes.size()==4){
       calculator=new Calculator(angles_observes, positions_x, positions_y);
       calculator.solveSystem();
-    }
   }
 
   void draw_angle_observe()
