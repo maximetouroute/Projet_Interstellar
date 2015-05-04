@@ -8,25 +8,19 @@ class Calculator
 //Ici A[4][4] et B [4][1]
   float[][] A;
   float[][] B;
-  float[][] T;
   QR qr; // Decomposition QR qui permet de resoudre l'equation
   double[][] X;
 
   Calculator(FloatList angles, FloatList Xp, FloatList Yp) {
     A = new float[4][4];
     B = new float[4][1];
-    T = new float[4][1];
-    T[0][0]=simulator.temps-3;
-    T[1][0]=simulator.temps-2;
-    T[2][0]=simulator.temps-1;
-    T[3][0]=simulator.temps;
     
     for(int i=0; i<A.length;i++){
-      float angle=angles.get(i);
+      float angle=radians(angles.get(i));
       A[i][0]=sin(angle);
-      A[i][1]=T[i][0]*sin(angle);
+      A[i][1]=(simulator.temps-simulator.STOCK_NUMBER+1+i)*sin(angle);
       A[i][2]=-cos(angle);
-      A[i][3]=-T[i][0]*cos(angle);
+      A[i][3]=-(simulator.temps-simulator.STOCK_NUMBER+1+i)*cos(angle);
       
       B[i][0]=Xp.get(i)*sin(angle)-Yp.get(i)*cos(angle);
     }

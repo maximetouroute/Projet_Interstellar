@@ -8,7 +8,7 @@ class Simulator
   float Te;
   
   // Le nombre de positions stockées
-  int STOCK_NUMBER = 4;
+  int STOCK_NUMBER = 30;
   
   float angle_observe;
   // Les elements dans le simulateur
