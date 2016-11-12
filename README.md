@@ -1,3 +1,3 @@
 # Projet_Interstellar
-Course Project on physics simulation
 
+Course Assignment on project simulation
